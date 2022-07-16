@@ -59,8 +59,53 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
 
             Situacao = OrcamentoStatusEnum.Aberto;
             DtFechamento = null;
+        } 
+
+        public void CancelarOrcamento()
+        {
+
+         switch (Situacao)
+
+            {
+
+                case OrcamentoStatusEnum.Aberto:
+                    throw new DomainException("Orçamento aberto! Feche antes de cancelar");
+
+
+                case OrcamentoStatusEnum.Fechado:
+                    Situacao = OrcamentoStatusEnum.Cancelado;
+
+                    break;
+                 
+            
+            }
+
+
+            {
+
+
+
+
+            }
+
+
+
+
+
+
+
+
         }
 
+
+
+
+
+
+
+
+
+        }
         public void DefinirValidade(int diasValidade)
         {
             this.Validade = new OrcamentoValidade(this, diasValidade);
@@ -103,4 +148,6 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
 
         #endregion
     }
+
+
 }
