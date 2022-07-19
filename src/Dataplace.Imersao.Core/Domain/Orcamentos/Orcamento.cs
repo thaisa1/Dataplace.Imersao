@@ -63,40 +63,16 @@ namespace Dataplace.Imersao.Core.Domain.Orcamentos
 
         public void CancelarOrcamento()
         {
+            if (Situacao == OrcamentoStatusEnum.Aberto)
+                throw new DomainException("Orçamento aberto! Feche antes de cancelar");
 
-         switch (Situacao)
-
-            {
-
-                case OrcamentoStatusEnum.Aberto:
-                    throw new DomainException("Orçamento aberto! Feche antes de cancelar");
-
-
-                case OrcamentoStatusEnum.Fechado:
-                    Situacao = OrcamentoStatusEnum.Cancelado;
-
-                    break;
-                 
-            
-            }
-
-
-            {
-
-
-
-
-            }
+               
 
 
 
 
 
-
-
-
-        }
-
+               
 
 
 
